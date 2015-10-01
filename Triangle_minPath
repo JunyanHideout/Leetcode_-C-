@@ -1,0 +1,12 @@
+public class Solution {
+    public int MinimumTotal(IList<IList<int>> triangle) {
+        IList<int> m=triangle[triangle.Count-1];
+        for(int i=triangle.Count-2;i>=0;i--){
+            for(int j=0;j<triangle[i].Count;j++){
+                int newv=triangle[i][j]+Math.Min(m[j],m[j+1]);
+                m[j]=newv;
+            }
+        }
+        return m[0];
+    }
+}
