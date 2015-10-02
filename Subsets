@@ -1,0 +1,17 @@
+public class Solution {
+    public IList<IList<int>> Subsets(int[] nums) {
+        Array.Sort(nums);
+        List<IList<int>> res=new List<IList<int>>();
+        List<int> sol=new List<int>();
+        int cbnt=(int)Math.Pow(2,nums.Length);
+        for(int i=0;i<cbnt;i++){
+            for(int j=0;j<nums.Length;j++){
+                if((i>>j)==0) break;
+                if(((i>>j)&1)==1) sol.Add(nums[j]);
+            }
+            res.Add(new List<int>(sol));
+            sol.Clear();
+        }
+        return res;
+    }
+}
